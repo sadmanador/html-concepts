@@ -1,0 +1,10 @@
+1. css base file -> css/tailwind.css
+2. base->	@tailwind base;
+		@tailwind components;
+		@tailwind utilities;
+3. command: npx tailwindcss-cli build css/tailwind.css -o build/tailwind.css                   
+4. command: npm init -y -> npm creates a package.json
+5. command: npm install -D tailwindcss postcss autoprefixer vite
+6. "test": "echo \"Error: no test specified\" && exit 1" replace with "dev": "vite"        (insite package.json > under the  "script")
+7. command: npx tailwindcss init -p
+8. command: npm run dev
