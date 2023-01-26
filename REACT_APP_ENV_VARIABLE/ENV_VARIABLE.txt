@@ -1,0 +1,4 @@
+1. .env.local file created in the root
+2. the variable which are needed to be hide are written in .env.local
+3. variables are written like: REACT_APP_MYVARIABLE=value
+4. variables are accessed like: process.env.REACT_APP_MYVARIABLE
