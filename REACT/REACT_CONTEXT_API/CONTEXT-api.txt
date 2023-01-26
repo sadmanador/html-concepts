@@ -1,0 +1,9 @@
+1. open a component with rsc
+2. OutSide of function/above: export const AuthContext = createContext();
+3. in the rsc function add parameter AuthProvider({children})
+4. return (<AuthContext.Provider value={data}>
+    {children}</AuthContext.Provider>)
+
+5. index.js -> <AuthProvider></App></AuthProvider>
+
+6. from other component: const {data} = useContext(AuthContext);
