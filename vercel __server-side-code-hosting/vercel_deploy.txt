@@ -1,0 +1,6 @@
+1. globally install vercel -> npm i -g vercel.
+2. copy the vercel.json in project's root.
+3. go to the project folder.
+4. command: vercel.
+5. command: vercel --prod -> for short url.
+6. replace the node code localhost with live url. 
