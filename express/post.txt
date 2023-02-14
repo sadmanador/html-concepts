@@ -1,0 +1,6 @@
+*** when any method isn't declared by default it's GET
+
+1. server-> app.post() create post api
+2. client-> fetch with the method
+3. client-> header, body are added to fetch
+4. server-> app.use(express.json()) required
