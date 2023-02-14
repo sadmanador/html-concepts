@@ -1,0 +1,5 @@
+1. npm init -y
+2. npm i cors express
+3. create :root/index.js
+4. package.json > "script"> "start": "node index.json"
+5. index.js > exp-tem
