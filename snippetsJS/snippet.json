@@ -1,0 +1,321 @@
+{
+  //exaple
+  //   "snippet name": {
+  //   "prefix": "key to type",
+  //   "body": [
+  //     "",
+  //     "",
+  //     "",
+  //     "",
+  //     "",
+  //     "",
+  //     "",
+  //   ],
+  //   "description": "description for the snippet"
+  // },
+
+  // express snippets
+  "require express": {
+    "prefix": "req-exp",
+    "body": ["const express = require('express');", "$1"],
+    "description": "writes express require"
+  },
+  "create app": {
+    "prefix": "call-exp",
+    "body": ["const app = express();", "$1"],
+    "description": "creates app by calling express"
+  },
+  "cors": {
+    "prefix": "cors-req",
+    "body": ["const cors = require('cors');", "$1"],
+    "description": "requiring cors after install"
+  },
+  "express.json": {
+    "prefix": "exp-json",
+    "body": ["app.use(express.json());", "$1"],
+    "description": "uses the json middleware"
+  },
+  "port": {
+    "prefix": "port",
+    "body": ["const port = process.env.PORT || ${1:5000};", "$2"],
+    "description": "creates the port with default value"
+  },
+  "cors-call": {
+    "prefix": "cors-call",
+    "body": ["app.use(cors());", "$1"],
+    "description": "requiring cors after install"
+  },
+  "express-template": {
+    "prefix": "exp-tem",
+    "body": [
+      "const express = require('express');",
+      "const app = express();",
+      "const port = process.env.PORT || ${1:5000};",
+      "const cors = require('cors');",
+      "require('dotenv').config()",
+      "",
+      "",
+      "//middleware",
+      "app.use(cors());",
+      "app.use(express.json());",
+      "",
+      "",
+      "app.get('${2:/}', (req, res) => {",
+      "res.send('${3:The Web is running}')",
+      "});",
+      "",
+      "",
+      "app.listen(port, () => {",
+      "console.log(`listening port: ${1:5000}`);",
+      "});"
+    ],
+    "description": "minimal template for express server"
+  },
+  "try finally": {
+    "prefix": "try-fi",
+    "body": ["try{", "${1}", "}", "finally{", "};"],
+    "description": "form input value for react"
+  },
+
+  //react
+  "react form": {
+    "prefix": "form-handle",
+    "body": [
+      "event.preventDefault();",
+      "",
+      "const form = event.target;",
+      "const name = form.name.value;",
+      "const email = form.email.value;",
+      "const password = form.password.value;"
+    ],
+    "description": "form input value for react"
+  },
+  "fetch": {
+    "prefix": "ftt",
+    "body": [
+      "fetch(${1:link})",
+      ".then(res => res.json())",
+      ".then(data => console.log(data))"
+    ],
+    "description": "fetch api"
+  },
+
+  //mongo
+  "async run()": {
+    "prefix": "run()",
+    "body": [
+      "async function run(){",
+      "try{",
+      "${1}",
+      "}",
+      "finally{",
+      "}",
+      "};",
+      "run().catch(console.dir);"
+    ],
+    "description": "form input value for react"
+  },
+  "data collection": {
+    "prefix": "coll",
+    "body": [
+      "const ${1:data}Collection = client.db('${2:dbName}').collection('${3:collectionName}');"
+    ],
+    "description": "form input value for react"
+  },
+  "insertOne": {
+    "prefix": "db-post",
+    "body": [
+      "app.post('/${1:data}', async (req, res) => {",
+      "const ${1:data} = req.body;",
+      "const result = await ${1:data}Collection.insertOne(${1:data});",
+      "res.send(result);",
+      "});"
+    ],
+    "description": "form input value for react"
+  },
+  "read": {
+    "prefix": "db-get",
+    "body": [
+      "app.get('/${1:data}', async (req, res) => {",
+      "const query = {};",
+      "const cursor = ${2:data}Collection.find(query);",
+      "const result = await cursor.toArray();",
+      "res.send(result);",
+      "});"
+    ],
+    "description": "form input value for react"
+  },
+  "delete": {
+    "prefix": "db-delete",
+    "body": [
+      "app.delete('/${1:data}/:id', async (req, res) => {",
+      "const id = req.params.id;",
+      "const query = { _id: ObjectId(id) };",
+      "const result = await ${1:data}Collection.deleteOne(query);",
+      "res.send(result);",
+      "});"
+    ],
+    "description": "form input value for react"
+  },
+  "update": {
+    "prefix": "db-put",
+    "body": [
+      "app.put('/${1:data}/:id', async (req, res) => {",
+      "const id = req.params.id;",
+      "const query = { _id: ObjectId(id) };",
+      "const ${1:data} = req.body;",
+      "const option = { upsert: true };",
+      "const updateUser = {",
+      "$set: {",
+      "${2:propertyName}: ${1:data}.${2:propertyName}",
+      "${3:propertyName}: ${1:data}.${3:propertyName}",
+      "${4:propertyName}: ${1:data}.${4:propertyName}",
+      "},",
+      "};",
+      "const result = await ${1:data}Collection.updateOne(query, updateUser, option);",
+      "res.send(result)",
+      "});"
+    ],
+    "description": "form input value for react"
+  },
+  "find single data": {
+    "prefix": "db-get-one",
+    "body": [
+      "app.get('/${1:data}/:id', async (req, res) => {",
+      "const id = req.params.id;",
+      "const query = { _id: ObjectId(id) };",
+      "const result = await ${2:data}Collection.findOne(query);",
+      "res.send(result);",
+      "});"
+    ],
+    "description": "form input value for react"
+  },
+  "patch db": {
+    "prefix": "db-patch",
+    "body": [
+      "app.patch('/$1:data}/:id', async(req, res) =>{",
+      "const id = req.params.id;",
+      "const ${2:updates} = req.body.${2:updates}",
+      "const query = {_id: ObjectId(id)}",
+      "const updateDoc = {",
+      "$set:{",
+      "status: status",
+      "}",
+      "}",
+      "const result = await ordersCollection.updateOne(query, updateDoc);",
+      "res.send(result);",
+      ")}"
+    ],
+    "description": "description for the snippet"
+  },
+
+  //fetch crud
+  "Fetch-post": {
+    "prefix": "meth-post",
+    "body": [
+      "fetch('${1:http://localhost:5000/}', {",
+      "method: 'POST',",
+      "headers: {",
+      "'content-type': 'application/json'",
+      "},",
+      "body: JSON.stringify(${2:data})",
+      "})",
+      ".then(res => res.json())",
+      ".then(data => {",
+      "console.log(data)",
+      "if(data.acknowledged){",
+      "alert('${3:successfully added to db}')",
+      "form.reset();",
+      "}",
+      "})",
+      ".catch(er => console.error(er));"
+    ],
+    "description": "minimal post method"
+  },
+  "Fetch-delete": {
+    "prefix": "meth-del",
+    "body": [
+      "fetch('${1:http://localhost:5000/${${2:/._id}}', {",
+      "method: 'DELETE',",
+      "})",
+      ".then((res) => res.json())",
+      ".then((data) => {",
+      "console.log(data)",
+      "if (data.deletedCount > 0) {",
+      "alert('${3:successfully deleted}');",
+      "${4:window.location.reload(true);}",
+      "}",
+      "});"
+    ],
+    "description": "minimal delete method"
+  },
+  "Fetch-put": {
+    "prefix": "meth-put",
+    "body": [
+      "fetch('${1:http://localhost:5000/${${2:/._id}}', {",
+      "method: 'PUT', headers: {'content-type': 'application/json'}, body: JSON.stringify(${3:data})",
+      "})",
+      ".then((res) => res.json())",
+      ".then((data) => {",
+      "console.log(data)",
+      "if (data.modifiedCount > 0) {",
+      "alert('${4:successfully Updates}');",
+      "${5:window.location.reload(true);}",
+      "}",
+      "});"
+    ],
+    "description": "minimal delete method"
+  },
+
+  //firebase
+  "Firebase-then": {
+    "prefix": "fire-then",
+    "body": [
+      ".then(result => {",
+      "const user = result.user;",
+      "setUser(user)",
+      "console.log(user)",
+      "form.reset();",
+      "})",
+      ".catch(err => console.error(err))"
+    ],
+    "description": "minimal delete method"
+  },
+  "Firebase-unsubscribe": {
+    "prefix": "fire-unsubscribe",
+    "body": [
+      "useEffect( () =>{",
+      "const unsubscribe = onAuthStateChanged(auth, currentUser =>{",
+      "setUser(currentUser);",
+      "});",
+      "return () => unsubscribe();",
+      "}, [])"
+    ],
+    "description": "minimal delete method"
+  },
+  "Patch": {
+    "prefix": "",
+    "body": ["", "", "", "", "", "", ""],
+    "description": "description for the snippet"
+  },
+
+  //mongoose snippets
+  "Mongoose connection": {
+    "prefix": "mongoose-connection",
+    "body": [
+      "const dataBase = (module.exports = () => {",
+      "const connectionParams = {",
+      "useNewUrlParser: true,useUnifiedTopology: true,};",
+      "try {",
+      "mongoose.connect(",
+      "`${1}`);",
+      "console.log('database connected');",
+      "} catch (err) {",
+      "console.log(err);",
+      "console.log('db connection failed')}",
+      "});",
+      "dataBase();"
+    ],
+    "description": "server connection for mongoose"
+  }
+}
