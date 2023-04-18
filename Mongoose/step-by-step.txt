@@ -1,0 +1,61 @@
+index.js
+npm - mongoose
+//step-1
+1. const mongoose = require("mongoose);
+
+//step-2 (make connection)
+1. connection code below
+const dataBase = (module.exports = () => {
+  const connectionParams = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  };
+  try {
+    mongoose.connect(
+      "<user>:<password>@<cluster>.euko3kv.mongodb.net/<Name of the DB>?retryWrites=true&w=majority"
+    );
+    console.log("database connected");
+  } catch (err) {
+    console.log(err);
+    console.log("db connection failed");
+  }
+});
+dataBase();
+
+
+//step-3 ()
+1. const collectionHandler = require("path");
+2. app.use('/', collectionHandler)
+
+
+//handler.js
+//step-4
+1. const express = require("express");
+2. const mongoose = require("mongoose");
+
+//making router
+3. const router = express.Router();
+4. const collectionSchema = require("path");
+5. const Collection = new mongoose.model("Collection", productSchema);
+
+6. router.get('/', async (req, res)=>{
+    try {
+    const result = await Product.find({})
+    res.send(result);
+  } catch (error) {
+    console.error(error.message);
+  }
+})
+
+
+//Code would not gonna working with a productSchema
+{making a schema}
+schema.js
+//step-4
+1. const mongoose = require("mongoose");
+2. const collectionSchema = mongoose.Schema({
+    name: String,
+    age: Number
+})
+
+3. module.exports = collectionSchema;
