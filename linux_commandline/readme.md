@@ -196,11 +196,13 @@ echo "Hello world"
 ```
 
 ### echo and redirect
+* append the text into the fileName if the file is already there
 ```bash
 echo "Hello world" >> fileName
 ```
 
 ### Count lines word and bytes
+* wc - word count
 ```bash
 wc fileName
 ```
@@ -235,7 +237,7 @@ sort -n file name
 sort -nr file name
 ```
 
-### Numeric sort avoid double
+### Numeric sort avoid double (unique number)
 ```bash
 sort -un file name
 ```
@@ -245,3 +247,123 @@ sort -un file name
 cat file1 file2 | sort >> newfile
 ```
 
+### uniq - ignore repeated lines
+* if the repeated lines are one after another then uniq will pick one line
+* However, if the repeated lines are in intervals, uniq will not work
+```bash
+uniq fileName
+```
+
+### uniq with sort to overcome the interval line issues
+* sort will align the repeated line next to each other
+* uniq will omit the repeated lines
+```bash
+sort fileName | uniq
+# or use
+sort -u fileName
+```
+
+### uniq command can only print the duplicate values
+```bash
+sort fileName | uniq -d
+```
+
+### uniq command can only print the non-duplicate values
+```bash
+sort fileName | uniq -u
+```
+
+### uniq command to count that how many times each line have occurred
+```bash
+sort fileName | uniq -c
+```
+
+### sorting the fileName | count the uniq | sort in numerical order
+```bash
+sort fileName | uniq -c | sort -n
+# or sort them in reverse order
+sort fileName | uniq -c | sort -nr
+# store them in newFile
+sort fileName | uniq -c | sort -n >> newFile
+```
+
+### echo ~ returns the current working dir
+```bash
+echo ~
+```
+
+### echo $PATH returns the current env path
+```bash
+echo ~
+```
+
+### echo * all current file names
+```bash
+echo *
+```
+
+### echo * only the specific files
+```bash
+echo *.txt
+```
+
+### echo * only the specific files
+```bash
+echo *.txt
+```
+
+### long listing info of the specific files
+```bash
+ls -l *.txt
+```
+
+### files that are same extinction up to 3 character
+```bash
+echo *.???
+```
+
+### remove specific file types
+```bash
+rm *.js
+```
+
+### {} expansion - make multiple files
+```bash
+touch {a,b,c}.txt
+```
+
+### {} expansion - make multiple files with a same name
+```bash
+touch app.{js,css,py,tsx}
+```
+
+### list only the file with same name
+```bash
+ls app.*
+# or
+ls app.??
+```
+
+### {} expansion - make multiple with numeric serial names
+```bash
+touch Day{1..365}.txt
+```
+
+### find the files that start with certain character
+```bash
+echo F*
+```
+
+### diff - find the differences
+* returns the differences
+* returns the differences of line number
+```bash
+diff fileName FileName
+```
+
+### diff - find the differences, and open the file side by side
+* returns the differences
+* returns the differences of line number
+```bash
+diff -y fileName FileName
+```
