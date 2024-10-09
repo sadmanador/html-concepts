@@ -154,4 +154,3 @@ docker compose -f docker-new-file-name.yml logs -f userService
 ```bash
 docker compose -f docker-new-file-name.yml restart userService
 ```
-
