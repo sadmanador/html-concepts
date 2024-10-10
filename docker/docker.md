@@ -6,6 +6,48 @@
 docker pull nginx
 ```
 
+## pulling a private image
+
+```bash
+docker pull dockerhub.myprivateregistry.com/classify_spam:v1
+```
+
+## Pushing image
+
+```bash
+docker image push image_name
+```
+
+## Tagging an image before pushing
+
+```bash
+docker tag classify_spam:v1 dockerhub.myprivateregistry.com/classify_spam:v1
+```
+
+## Push the tagged image
+
+```bash
+docker image push dockerhub.myprivateregistry.com/classify_spam:v1
+```
+
+## Login
+
+```bash
+docker login dockerhub.myprivateregistry.com
+```
+
+## Saving docker image as tar file
+
+```bash
+docker save -o image.tar classify_spam:v1
+```
+
+## loading a tar file
+
+```bash
+docker load -i image.tar
+```
+
 ## Running a image
 
 ```bash
@@ -209,11 +251,26 @@ docker compose -f docker-new-file-name.yml restart userService
 
 ## Dockerfile
 
-- dockerfile help so make specific images base on other image
+* dockerfile help so make specific images base on other image
 
 ```bash
 FROM nginx:latest
 ADD . /usr/share/nginx/html
+RUN apt-get install -y node
+```
+
+## Build an image from Dockerfile
+```bash
+docker build .
+# or 
+docker build /location/to/the/file
+```
+
+## Naming the image while building
+```bash
+docker build -t file_name .
+# or
+docker build -t file_name:v1 .
 ```
 
 ## building the docker image
